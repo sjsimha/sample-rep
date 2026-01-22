@@ -25,5 +25,5 @@ jobs:
 
       - name: Run tests
         run: |
-          echo "Running tests..."
+          exit 1
           echo "All tests passed!"
