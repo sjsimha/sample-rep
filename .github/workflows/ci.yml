@@ -27,3 +27,19 @@ jobs:
         run: |
           echo "Running tests"
           echo "All tests passed!"
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create deployment artifact
+        run: |
+          echo "Deployed at $(date)" > deployment.txt
+
+      - name: Upload deployment artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-info
+          path: deployment.txt
